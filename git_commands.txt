@@ -1,0 +1,24 @@
+current/local branch = "development"
+remote branch = "production"
+
+A) Push without commit message and without editor
+1) Read local_branch ....(default = "development")
+2) Read remote_branch ...(default = "production")
+3) git checkout production
+4) git pull origin production     ....... (required when multiple people are working, to take the latest code on our production branch)
+5) git pull --no-edit origin development           ....... (files committed in development, but code not present in production)
+6) git push origin production     ....... (update code of production)
+7) git status     .....(check the final status)
+
+
+B) Push with commit message and without editor
+
+1) Read local_branch  ...(default = "development")
+2) Read remote_branch  ...(default = "production")
+3) git checkout production
+4) git pull origin production
+5) git pull --no-commit origin development
+6) Read commit message  ...(default = "dev_to_prod")
+7) git commit -m "message"
+8) git push origin production
+9) git status

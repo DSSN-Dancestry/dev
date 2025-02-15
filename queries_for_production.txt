@@ -1,0 +1,6 @@
+
+alter table `artist_profile` add `artist_yob` int after `artist_dob`;
+
+update artist_profile set artist_yob = year(artist_dob);
+
+alter table ‘artist_education’ drop column ‘artist_email_id’;

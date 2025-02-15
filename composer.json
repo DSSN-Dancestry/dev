@@ -1,0 +1,7 @@
+{
+    "require": {
+        "google/apiclient": "^2.12",
+        "facebook/graph-sdk": "^5.1",
+        "doctorconceptual/php-instagram-graph-sdk": "^2.0"
+    }
+}

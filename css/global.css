@@ -1,0 +1,708 @@
+:root {
+  --dark-green: #137525;
+  --mid-green: #2c9447;
+  --light-green: #12b83e;
+
+  --default-font-size: 18px;
+  --default-font-family: 'arial', sans-serif;
+}
+
+/* ---------------------- generic.css ----------------------------- */
+
+body {
+  color: #232323;
+  font-size: var(--default-font-size) !important;
+  font-family: var(--default-font-family) !important;
+}
+
+span,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--default-font-family) !important;
+}
+
+span,
+p {
+  line-height: 2;
+}
+
+img {
+  border-radius: 10px;
+}
+
+div#success {
+  text-align: center;
+  box-shadow: 1px 1px 5px #455644;
+  background: #bae8ba;
+  padding: 10px;
+  border-radius: 3px;
+  margin: 0 auto;
+  width: 350px;
+}
+
+.inputBox {
+  width: 100%;
+  margin: 5px 0px 15px 0px;
+  border: #dedede 1px solid;
+  box-sizing: border-box;
+  padding: 15px;
+}
+
+/* ------------- UNUSED? ------------- */
+
+
+/* #contact-popup {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  color: #676767;
+} */
+
+/* .contact-form {
+  width: 350px;
+  margin: 0px;
+  background-color: white;
+  font-family: Arial;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  margin-left: -210px;
+  margin-top: -255px;
+  box-shadow: 1px 1px 5px #444444;
+  padding: 20px 40px 40px 40px;
+} */
+
+/* #contact-icon {
+  padding: 10px 5px 5px 12px;
+  width: 58px;
+  color: white;
+  box-shadow: 1px 1px 5px grey;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 60px auto;
+} */
+
+.info {
+  color: #d30a0a;
+  letter-spacing: 2px;
+  padding-left: 5px;
+}
+
+#send {
+  background-color: #09F;
+  border: 1px solid #1398f1;
+  font-family: Arial;
+  color: white;
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+}
+
+/* 
+#contact-popup h1 {
+  font-weight: normal;
+  text-align: center;
+  margin: 10px 0px 20px 0px;
+} */
+
+.input-error {
+  border: #e66262 1px solid;
+}
+
+/* --------------------- original global.css ------------------------- */
+
+/* TRYING to import Trajan font */
+/* @font-face {
+  font-family: 'Trajanus';
+  src: url('fonts/Trajanus.woff2') format('woff2'),
+       url('fonts/Trajanus.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+} */
+
+label {
+  font-size: var(--default-font-size);
+}
+
+header img {
+  height: 150px;
+}
+
+
+#navbar {
+  background-color: white;
+  z-index: 1;
+  box-sizing: border-box;
+  border-bottom: 1px solid black;
+
+  position: fixed;
+  width: 100%;
+}
+
+nav {
+  margin: 0;
+  height: 80px;
+  font-size: 24px;
+  text-decoration: none;
+
+  /* !important is necessary to override "display: block" from default founndation.min.css:2 */
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+
+  /* Overrides default .row */
+  /* max-width: none !important; */
+}
+
+nav a {
+  color: var(--mid-green);
+  display: inline;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.nav-link {
+  padding: 1px;
+
+}
+
+nav a:hover,
+nav a:focus {
+  color: var(--dark-green);
+  text-decoration: none;
+}
+
+nav .active {
+  color: black;
+}
+
+#brand {
+  height: 80px;
+}
+
+#login {
+  padding-left: 0px;
+}
+
+#login-div {
+  list-style: none;
+}
+
+#admin-navbar {
+  position: relative;
+  top: 80px;
+  /* Accounts for the user navbar. Note: no pages currently take into account the admin-navbar's additional height */
+
+  background-color: var(--mid-green);
+
+  justify-content: space-between;
+  align-items: center;
+
+
+  z-index: 2;
+  box-sizing: border-box;
+  position: fixed;
+  width: 100%;
+}
+
+#admin-navbar ul {
+  display: flex;
+  justify-content: center;
+}
+
+#admin-navbar a {
+  color: white;
+}
+
+#admin-navbar a:hover {
+  color: lightgrey;
+}
+
+#nav-spacer {
+  height: 80px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#admin-nav-spacer {
+  height: 40px;
+  /* 40px because the admin-navbar has a height of 40.4px */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* side-navbar BEGIN ------------------------------------------------ */
+
+/* The side navigation menu */
+.side-navbar {
+  height: 100%;
+  /* 100% Full-height */
+  width: 0;
+  /* 0 width - change this with JavaScript */
+  position: fixed;
+  /* Stay in place */
+  z-index: 2;
+  /* Stay on top */
+  background-color: white;
+  /* Black*/
+  overflow: hidden;
+  /* Disable horizontal scroll */
+  padding-top: 70px;
+  /* Place content 60px from the top */
+  transition: 0.5s;
+  /* 0.5 second transition effect to slide in the side-navbar */
+}
+
+#side-navbar-container {
+  height: 100%;
+  /* Makes it cover the same height as .side-navbar */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+/* The navigation menu links */
+.side-navbar a,
+#side-navbar-profile {
+  text-decoration: none;
+  font-size: 24px;
+  color: var(--mid-green);
+  display: block;
+  transition: 0.3s;
+}
+
+#login-hr {
+  margin: 8px 52px 24px 16px;
+}
+
+.mobile-footer a {
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block;
+  transition: 0.3s;
+}
+
+#admin-side-navbar a {
+  text-decoration: none;
+  font-size: 18px;
+  color: var(--mid-green);
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.side-navbar a:hover,
+#admin-side-navbar a:hover {
+  color: var(--dark-green);
+}
+
+/* Position and style the close button (top right corner) */
+.side-navbar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  font-size: 36px;
+  /* margin-left: 50px; */
+}
+
+
+
+#mobile-menu {
+  height: 70px;
+  display: none;
+  font-size: 24px;
+  border-bottom: 1px solid black;
+  user-select: none;
+
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  /* This should be on top of the body (z-index = 0) but below the opacity div (index 2)*/
+  background-color: white;
+}
+
+#hamburger {
+  position: relative;
+  left: 20px;
+  top: -60px;
+  color: var(--mid-green);
+}
+
+#hamburger:hover {
+  color: var(--dark-green);
+}
+
+#mobile-logo-total {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  height: 100%
+}
+
+.vertical-menu {
+  padding-left: 30px;
+}
+
+.vertical-menu a {
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+#mobile-logo,
+#mobile-logotext {
+  height: 100%;
+}
+
+#branding-copywrite {
+  margin: 0px;
+}
+
+#side-navbar-container {
+  padding-left: 36px;
+}
+
+#side-navbar-profile {
+  padding: 0.7rem 1rem;
+}
+
+#side-navbar-welcome-message {
+  color: black;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+#opacity-cover {
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  width: 100%;
+  height: 0%;
+  /* changed by js when side-navbar is opened */
+  display: block;
+  position: fixed;
+  /* ensures div covers page even when scrolled down */
+  z-index: 2;
+  /* This should cover the entire body EXCEPT the side-navbar when it is pulled out */
+}
+
+@media screen and (max-width: 1024px) {
+  #navbar {
+    display: none !important;
+  }
+
+  #admin-navbar {
+    display: none !important;
+  }
+
+  #nav-spacer {
+    height: 70px;
+  }
+
+  #admin-nav-spacer {
+    height: 0px;
+  }
+
+  #mobile-menu {
+    display: block;
+  }
+
+  .footer-links {
+    display: none !important;
+  }
+
+  #footer-branding {
+    text-align: center;
+
+    justify-content: center;
+  }
+
+  #footer-menu {
+    /* !important is necessary to override "display: block" from default founndation.min.css:2 */
+    display: block !important;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+/* side-navbar END ------------------------------------------------ */
+
+/* TODO: Move to home.css (initial move broke stuff idk why) */
+#splash-logo img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  /* screen height - nav-menue height - top & bottom margins */
+  height: calc(100vh - 80px - 100px);
+  object-fit: scale-down;
+}
+
+.button,
+button {
+  padding: 0.3rem 0.8rem;
+  background-color: var(--mid-green);
+  font-size: var(--default-font-size);
+  border-radius: 10px;
+}
+
+.button:hover,
+button:hover {
+  background-color: var(--dark-green);
+}
+
+/* Might come into play later, not used right now */
+/* .button.secondary {
+  background-color: var(--mid-green);
+}
+.button.secondary:hover {
+  background-color: var(--dark-green);
+} */
+
+.credited-image {
+  text-align: center;
+}
+
+.image-credits {
+  font-size: 12px;
+  font-style: italic;
+}
+
+footer {
+  height: 80px;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+#footer-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer a {
+  display: inline;
+  float: left;
+}
+
+.social-media-icon {
+  font-size: 2rem;
+}
+
+.fi-social-twitter {
+  color: #00aced;
+}
+
+.fi-social-facebook {
+  color: #3b5998;
+}
+
+.fi-social-instagram {
+  color: #5851DB;
+}
+
+#ub-logo {
+  max-width: 90%;
+  max-height: 40;
+}
+
+.admin_button {
+  background-color: green;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.admin_mark_as_done {
+  color: green;
+  background-color: #99ff99;
+  border-radius: .5px;
+  width: 140px;
+}
+
+.admin_td {
+  width: 200px;
+}
+
+.admin_console_tab {
+  float: left;
+  width: 25%;
+}
+
+#genreMessage {
+  background: green;
+  border-radius: 5px;
+  padding: 10px;
+  color: white;
+  width: 400px;
+  visibility: hidden;
+}
+
+#coming-soon {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Neeraj Changes */
+
+
+/* lineage_index.php */
+
+.lineageBots {
+  display: inline-block;
+  margin-right: 0%;
+  width: 100%;
+  height: 32px;
+  background-color: #2C9447;
+  box-shadow: 1px 1px 2px #999999;
+  font-family: arial, sans-serif;
+  font-size: 18px;
+  font-weight: normal;
+  color: #eeeeee;
+  border: 1px solid #777777;
+  margin-top:5px;
+  margin-bottom:5px;
+	border-radius: 10px;
+}
+
+input.lineageBots {
+  border-radius: 10px;
+}
+
+
+.lineageBots:hover {
+  background-color: #137525;
+  color: white;
+}
+
+
+.halfBots { 
+  width: 49%;
+}
+
+.tutorialBot { 
+  width: 25%;
+  float: right;
+  margin: 5px;
+  height: 24px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.topFilterClass {
+  width: 100px;
+  height: 24px;
+}
+
+.foldallsearch {
+  margin-top: 20px;
+}
+
+.foldallsearch:after {
+  content: '\002B';
+
+  float: right;
+  margin-left: 10 px;
+  margin-right: 10px;
+}
+
+.addAllSearchtype {
+  margin-top: 10px;
+}
+
+.addArtistSearch {
+  cursor: pointer;
+  font-size: 18px;
+  font-family: arial, serif;
+  font-weight: normal;
+  padding: 0px 10px;
+  margin-top: -5px;
+  margin-bottom: -5px;
+}
+
+.lineagePlus {
+  font-size: 16px;
+}
+
+
+
+
+
+/* Contribute Pages */
+
+.prev_button {
+  margin: 0;
+  padding: 0;
+  width: unset;
+  padding-left: 10px;
+}
+
+.save_and_next {
+  text-align: right;
+  margin: 0;
+  padding: 0px;
+  padding-top: 0px;
+  width: unset;
+  padding-right: 10px;
+}
+
+.save_and_continue {
+  width: unset;
+  padding: 0;
+  padding-right: 28.6%;
+}
+
+
+@media only screen and (max-width: 1000px) {
+  .prev_button {
+    width: 100%;
+    padding-right: 5px;
+  }
+  .save_and_next {
+    width: 100%;
+    text-align: right;
+    padding-top: 0px;
+    padding-left: 5px;
+  }
+
+  .save_and_continue {
+    padding: 0;
+    text-align: center;
+    float: inherit;
+    padding-inline: 10px;
+    width: 100%;
+  }
+}
