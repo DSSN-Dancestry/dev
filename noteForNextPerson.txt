@@ -1,0 +1,89 @@
+Hello next developer!
+
+Welcome to the Dancestry project. Please check that the last person to work on this project was Clara.
+If it was someone else, this document may be out of date.
+
+The files I worked on include:
+1. js/lineage_network_default.js; <-- most important
+2. lineage_index.php;
+3. artistconroller.php;
+4. user_profile_popup.php;
+
+
+The main files to worry about are the first 2. #1 contains the functionality for the network. #2 contains the front end for the network.
+#3 was largely built before my time on this project, but it needs to be added to and contains the SQL for the network.
+#4 does not need work, but it contains the code for the popup for when a node is clicked.
+
+The way things work (in order of how to understand the program):
+#2:
+lineage_index.php calls the main functions in js/lineage_network_default.js.
+In the body tag, you can see that the function "draw()" (from #1) is called onLoad() and this is what generates the initial network.
+
+  Filters: Later on, the network_display_div contains the main filters for the network, which calls the function updatePage(), which takes the argument of whatever the tab is called.
+      Please be aware, the Full Network tab was changed to display the words "All Relationships", but "Full Network" is what is used as the variable name throughout #1.
+  Searches: This file also contains the searches.
+      The searches are split into two main categories -->  searches for artists and searches for the attributes of these artists.
+      The front end of these are complete, for now. Please see the description of file #1 to see what there is left to do on the backend.
+  Extra Buttons: At the bottom of the section of searches, there are two buttons: clear and submit.
+      Clear is fully operational.
+      We have not finished our discussion on whether or not submit is necessary.
+  Popups: The last part of things to understand here are the popups.
+      Some of the popups are temporary: the noLineagePopup ids
+      The sticky popups are the ones built in file #4.
+      All are hidden and called upon to appear in file #1.
+      Some popups are exclusively constructed in file #1, and they are the ones used to show the user what was found in a search.
+
+#1:
+This is the most important file!!!!!
+The main function here is draw(), which is called onLoad() of file #2.
+
+  Above draw() functionality: There are two functions controlled by the filters in file #2 --> updatePage() and formatTabLabels()
+      These functions filter an already constructed network and are not part of network functionality.
+      formatTabLabels() serves only to cosmetically show which filter we are currently in.
+  Logged In vs. Not Logged In: Users who have not joined the site may still view the program, so there is a default view that shows some of the artists.
+      The logged in version shows the user's network.
+      Much of my time was spent that other than the initial home page, the functionality of the site should be identical.
+  Data Structures:
+    myNetwork --  the literal data structure built by the vis.js program
+        You are able to edit this depending on what you are trying to access.
+        If you are accessing the nodes or edges:
+            Use the functions add, update, and remove.
+            Add must take all the data necessary for a node/edge.
+            Update can take multiple nodes and add them (it will never remove nodes).
+            Remove only take the id of the node you want to remove.
+            Please use like this:
+              var otherNodes = list of other nodes
+              myNetwork.body.data.nodes.add({id: "504"})
+              myNetwork.body.data.nodes.update(otherNodes)
+              myNetwork.body.data.nodes.remove("504")
+    default_nodes and default_edges -- this is what you are using to load the network.
+        These are the inputs to what makes myNetwork: you will also need a set of options. The options have been predefined, but they need work because the network is often jittery.
+    all_nodes --  this is the storage for the multiple states of the program.
+      In order to retain the different filters, each filter type is shown here, with the proper nodes and edges associated with each filter.
+  Getting Started:
+    My recommendation is to start printing out the above listed data structures in either of the first two functions --> 	if (isLoggedIn) userSpecificHomeScreenLoad(); else defaultHomeScreenLoad().
+  TODO:
+    Much of what needs to be done/is done is heavily commented in this file, but here is a summary of what needs to get done.
+    The network's double click functionality (which collapses a node) is not perfect, and sometimes misses nodes.
+      It was also the hope that the collapsing of nodes was in the rightClick (known as "oncontext") functionality.
+        The problem is that you cannot directly access the node on which you are rightClicking.
+        You can access the node id in normal/double clicking by accessing the obj.nodes[0], where obj.nodes is a one element long array of the node you clicked.
+      Double clicking also stabilizes the network.
+        You need to make sure you can re-click on the next click, if you wanted to reopen this node.
+    // TO-DONE?
+    The selection of nodes is somewhat finicky. When you click on the network several times, the selection of a node often fails to make the node turn into a rectangle.
+      We are using the transformation of the circle to the rectangle to show the user that they have selected a node.
+      The rectangle matches the shape of the picture that appears if they have a profile.
+    What I did not get to: Searches
+      I did not finish the following searches: university, degree, major, gender, and living status.
+      University, Degree, and Major have had their sql functions started. They do not fully work, but I did not have time to debug them.
+      Gender and Living status, I simply did not have time to get to. Be careful, these work differently from the other searches.
+        Most searches have a list of possible labels from the database, which are loaded in the function loadAutocompleteData(category).
+        These two however, have only a few options, meaning they are pre-picked, not typed by the user.
+      The search functionality works by loading in all the autofill possibilities on the load of the network --> loadAutocompleteData(all the attributes)
+        We then can open one of the search options using the addEventListener and calling the appropriate openNonArtistSearch().
+        Then, once open, the user can begin typing and can click on one of the autofill suggestions using autocompleteAttribute().
+        When selected, this will fill in the object search_filters, which keeps track of which filters have been applied and it calls the function searchAttribute().
+        searchAttribute(), if not on the homepage will filter the current page, or if it is on the home page will initiate a whole new search, and call searchByAttribute().
+
+If you need help reading my code, my email is claracook99@gmail.com.

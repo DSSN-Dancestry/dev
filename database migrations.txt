@@ -1,0 +1,75 @@
+create table event_planner(
+   event_id INT NOT NULL AUTO_INCREMENT,
+   user_email_id VARCHAR(100) NOT NULL,
+   event_name VARCHAR(100) NOT NULL,
+   event_location VARCHAR(100) NOT NULL,
+   event_description VARCHAR(255),
+   event_startdate DATE NOT NULL,
+   event_time TIME,
+   PRIMARY KEY ( event_id )
+);
+
+
+
+CREATE TABLE `bugs` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `file_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+ `uploaded_on` datetime NOT NULL,
+ `status` enum('1','0') COLLATE utf8_unicode_ci NOT NULL DEFAULT '1',
+ PRIMARY KEY (`id`),
+ `user_email_id` varchar(100),
+ `user_name` varchar(50),
+ `user_comment` varchar(400),
+ `issue_title` varchar(150)
+) 
+
+CREATE TABLE `bug_comments` ( `id` int(11) , `comment` varchar(255) COLLATE utf8_unicode_ci NOT NULL, `uploaded_on` datetime NOT NULL )
+
+
+ALTER TABLE event_planner
+ADD COLUMN last_notified DATETIME after event_time;
+
+
+
+
+
+
+select artist_email_id_2 from artist_relation where artist_email_id_1='mikipadh@buffalo.edu' and artist_email_id_2 != ""
+
+
+
+
+
+
+
+INSERT INTO `event_planner`(`event_id`, `user_email_id`, `event_name`, `event_location`, `event_description`, `event_startdate`, `event_time`) 
+VALUES (NULL,'abhave@buffalo.edu','Football Class','Clark Hall','I will teach Football','2019-10-05','17:30:00');
+
+
+INSERT INTO `event_planner`(`event_id`, `user_email_id`, `event_name`, `event_location`, `event_description`, `event_startdate`, `event_time`) 
+VALUES (NULL,'mikipadh@buffalo.edu','Salsa Class','UB Dance Hall','I will teach Salsa','2018-10-20','22:00:00');
+
+
+INSERT INTO `event_planner`(`event_id`, `user_email_id`, `event_name`, `event_location`, `event_description`, `event_startdate`, `event_time`) 
+VALUES (NULL,'mikipadh@buffalo.edu','Tech Event','Davis Hall','UBs grand tech event which includes project demo day as well as poster presentation','2019-12-06','16:00:00');
+
+
+ALTER TABLE bugs
+ADD severity varchar(15);
+
+ALTER TABLE bugs
+ADD category varchar(15);
+
+ALTER TABLE bugs
+ADD category varchar(100);
+
+ALTER TABLE `artist_profile` ADD `past_profile_name` VARCHAR(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL AFTER `profile_name`;
+
+//include 'set_email_ids_script.php'; // This command is already added in index.php. Once the script is called once by running index.php and dummy email ids are created, this command should be commented in index.php
+
+ALTER TABLE `artist_profile` CHANGE `artist_email_address` `artist_email_address` VARCHAR(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
+
+ALTER TABLE artist_profile DROP INDEX name_identifier;
+
+ALTER TABLE artist_profile ALTER artist_website SET DEFAULT '';
+

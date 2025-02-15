@@ -1,0 +1,27 @@
+influenced by definition - change cursor to default
+influenced by definition - check the time
+
+
+7 - Linked Profile Prompt Window-
+http://choreographiclineage.buffalo.edu/issue.php?id=90
+http://stark.cse.buffalo.edu/choreographiclineage/profiles.php
+- Add artist profile and try registering using same email id
+- profile_name to past_profile name - when user updates their own artist, change other to artist and their email to profile_email, original profile_emial to past_profile
+
+
+8 - Linking to Melanie Aceto
+http://stark.cse.buffalo.edu/choreographiclineage/add_lineage.php
+Search not working
+When we add name and find it, then we should add email id by default
+Check the delete feature as well
+(When you click on Link profile after you did not enter email, then save and continue should trigger by itself)
+
+
+27th March
+1) Check for the button change password
+
+2) Autocomplete the name - type head
+
+3) Check for delete of user
+	
+4) Add message for choose file and upload - add message for valid formats - add_artist_biography.php

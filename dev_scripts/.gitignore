@@ -1,0 +1,8 @@
+# Ignore everything
+*
+# Except
+!.gitignore
+!mount_project.sh
+!install_xampp.sh
+!transfer_files.sh
+!update_branch_files.sh
